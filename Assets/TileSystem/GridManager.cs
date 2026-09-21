@@ -116,14 +116,23 @@ public class GridManager : MonoBehaviour
         Vector2Int end = start + displacement;
 
         // Checking if its a valid position to spawn at
-        if (!WithinBounds(end)) { return false; }
-        if (Occupied(end)) { return false; }
+        if (!WithinBounds(end)) 
+        {
+            Debug.Log("outabounds");
+            return false; 
+        }
+        if (Occupied(end)) 
+        {
+            Debug.Log("Somethings here");
+            return false; 
+        }
 
         grid[end.x][end.y] = objectToMove; // Moving the object
         UpdateGridAtPos(end);
 
         grid[start.x][start.y] = null; // resetting the start position
 
+        Debug.Log("right!");
         return true;
     }
 
